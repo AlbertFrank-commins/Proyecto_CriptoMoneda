@@ -11,9 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Capa_datos">
-      <HintPath>..\..\sist_gest_peditos\Capa_datos\obj\Debug\net8.0\Capa_datos.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj" />
   </ItemGroup>
+
 
 </Project>

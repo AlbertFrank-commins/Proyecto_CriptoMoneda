@@ -1,12 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using CapaDatos;
-using System;
-
-
-namespace CapaJson
+﻿namespace CapaDatos
 {
     public class Root
     {
