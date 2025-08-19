@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentacion1", "CapaPr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CapaPresentacion", "CapaPresentacion", "{75AAFE54-2C57-40D7-BB4D-835C4854F369}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forns_Descripcion", "Forns_Descripcion\Forns_Descripcion.csproj", "{04F2E6CE-6C3D-4A43-A68C-9748171519DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{B2C72D08-8627-498D-BF5D-678F8087387B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2C72D08-8627-498D-BF5D-678F8087387B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2C72D08-8627-498D-BF5D-678F8087387B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F2E6CE-6C3D-4A43-A68C-9748171519DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F2E6CE-6C3D-4A43-A68C-9748171519DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F2E6CE-6C3D-4A43-A68C-9748171519DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F2E6CE-6C3D-4A43-A68C-9748171519DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{C88C504F-D520-4836-B226-42DA13E3DDCE} = {4C24F2C6-CB01-4AE9-82E3-D7E8EB830616}
 		{548823F6-3AF5-408A-A882-32231A01AF44} = {369CB01D-A1A7-72D2-AABC-3F0945D148A2}
 		{B2C72D08-8627-498D-BF5D-678F8087387B} = {75AAFE54-2C57-40D7-BB4D-835C4854F369}
+		{04F2E6CE-6C3D-4A43-A68C-9748171519DD} = {75AAFE54-2C57-40D7-BB4D-835C4854F369}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C09EB7B1-6240-49A3-B686-04DEFA4D1836}

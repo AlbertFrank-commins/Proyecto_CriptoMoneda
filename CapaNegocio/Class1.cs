@@ -1,63 +1,92 @@
-﻿using ApiRest;
+﻿// CapaNegocio/MonedaCN.cs
+using ApiRest;
 using CapaDatos;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
-    public class MonedaCN
+    public class MonedaCN : IDisposable
     {
-        private readonly ApiService _apiService;
-        private List<Root> _cacheMonedas; // Para guardar la lista y no llamar a la API cada vez
+        private readonly ApiService _api;
+        private List<CoinListItem> _cacheLista = new();
+        private DateTime _cacheFecha = DateTime.MinValue;
+        private readonly TimeSpan _cacheTTL = TimeSpan.FromMinutes(30);
+
+
+        public MonedaCN(ApiService? api = null)
+        {
+            _api = api ?? new ApiService();
+        }
+
+        private async Task EnsureListaAsync(CancellationToken ct = default)
+        {
+            if (_cacheLista.Count == 0 || DateTime.UtcNow - _cacheFecha > _cacheTTL)
+            {
+                _cacheLista = await _api.GetCoinListAsync(ct);
+                _cacheFecha = DateTime.UtcNow;
+            }
+        }
+
+        // Búsqueda directa por ID
+        public Task<CoinMarket?> BuscarPorIdAsync(string id, CancellationToken ct = default)
+        {
+            if (string.IsNullOrWhiteSpace(id)) return Task.FromResult<CoinMarket?>(null);
+            return _api.GetCoinMarketByIdAsync(id.Trim(), "usd", ct);
+        }
+
+        // Búsqueda por Nombre (exacto; si no, "contains")
+        public async Task<CoinMarket?> BuscarPorNombreAsync(string nombre, CancellationToken ct = default)
+        {
+            if (string.IsNullOrWhiteSpace(nombre)) return null;
+            await EnsureListaAsync(ct);
+
+            var q = nombre.Trim();
+            var item = _cacheLista.FirstOrDefault(x => x.name.Equals(q, StringComparison.OrdinalIgnoreCase))
+                    ?? _cacheLista.FirstOrDefault(x => x.name.Contains(q, StringComparison.OrdinalIgnoreCase));
+
+            return item != null ? await _api.GetCoinMarketByIdAsync(item.id, "usd", ct) : null;
+        }
+
+        // Búsqueda por Símbolo (pueden existir duplicados; se toma el primero)
+        public async Task<CoinMarket?> BuscarPorSimboloAsync(string simbolo, CancellationToken ct = default)
+        {
+            if (string.IsNullOrWhiteSpace(simbolo)) return null;
+            await EnsureListaAsync(ct);
+
+            var q = simbolo.Trim();
+            var item = _cacheLista.FirstOrDefault(x => x.symbol.Equals(q, StringComparison.OrdinalIgnoreCase))
+                    ?? _cacheLista.FirstOrDefault(x => x.symbol.Contains(q, StringComparison.OrdinalIgnoreCase));
+
+            return item != null ? await _api.GetCoinMarketByIdAsync(item.id, "usd", ct) : null;
+        }
+
+        // Devuelve la lista cacheada para autocompletar, combos, etc.
+        public async Task<List<CoinListItem>> ObtenerListaAsync(CancellationToken ct = default)
+        {
+            await EnsureListaAsync(ct);
+            return _cacheLista;
+        }
+
+        public void LimpiarCache()
+        {
+            _cacheLista.Clear();
+            _cacheFecha = DateTime.MinValue;
+        }
+
+        public void Dispose() => _api.Dispose();
+    
+    
+    
+        private readonly CoinGeckoChartService _chartService;
 
         public MonedaCN()
         {
-            _apiService = new ApiService();
-            _cacheMonedas = new List<Root>();
+            _chartService = new CoinGeckoChartService();
         }
 
-   
-        // Obtiene todas las monedas desde la API y las guarda en memoria
-      
-        public async Task<List<Root>> ObtenerMonedas()
+        public async Task<MarketChartDataModel> ObtenerDatosGrafico(string id, string intervalo = "Días")
         {
-            _cacheMonedas = await _apiService.GetMonedasAsync();
-            return _cacheMonedas;
-        }
-
-       
-        // Busca monedas cuyo nombre contenga el texto dado
-    
-        public List<Root> BuscarPorNombre(string nombre)
-        {
-            if (string.IsNullOrWhiteSpace(nombre)) return _cacheMonedas;
-
-            return _cacheMonedas
-                .Where(m => m.name.ToLower().Contains(nombre.ToLower()))
-                .ToList();
-        }
-
-      
-        // Filtra monedas por símbolo exacto
-      
-        public List<Root> FiltrarPorSimbolo(string simbolo)
-        {
-            if (string.IsNullOrWhiteSpace(simbolo)) return _cacheMonedas;
-
-            return _cacheMonedas
-                .Where(m => m.symbol.ToLower() == simbolo.ToLower())
-                .ToList();
-        }
-
-        
-        // Limpia y devuelve la lista completa (reset)
-    
-        public List<Root> Limpiar()
-        {
-            return _cacheMonedas;
+            return await _chartService.GetMarketChartDataAsync(id, intervalo);
         }
     }
 }
-
 
