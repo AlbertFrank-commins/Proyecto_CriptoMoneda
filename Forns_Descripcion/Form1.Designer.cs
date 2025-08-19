@@ -28,69 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
-            button1 = new Button();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            picLogo = new PictureBox();
+            txtId = new TextBox();
+            btnBuscar = new Button();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            cbIntervalo = new ComboBox();
+            lblNombre = new Label();
+            ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // picLogo
             // 
-            pictureBox1.Location = new Point(330, 111);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(147, 68);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            picLogo.Location = new Point(232, 69);
+            picLogo.Name = "picLogo";
+            picLogo.Size = new Size(278, 135);
+            picLogo.TabIndex = 0;
+            picLogo.TabStop = false;
             // 
-            // textBox1
+            // txtId
             // 
-            textBox1.Location = new Point(125, 36);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(210, 25);
-            textBox1.TabIndex = 1;
+            txtId.Location = new Point(125, 38);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(156, 25);
+            txtId.TabIndex = 1;
             // 
-            // button1
+            // btnBuscar
             // 
-            button1.Location = new Point(384, 36);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnBuscar.Location = new Point(460, 40);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(75, 23);
+            btnBuscar.TabIndex = 2;
+            btnBuscar.Text = "button1";
+            btnBuscar.UseVisualStyleBackColor = true;
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
-            chart1.Location = new Point(153, 215);
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
+            chart1.Location = new Point(12, 225);
             chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart1.Series.Add(series1);
-            chart1.Size = new Size(518, 213);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chart1.Series.Add(series2);
+            chart1.Size = new Size(776, 213);
             chart1.TabIndex = 3;
             chart1.Text = "chart1";
+            // 
+            // cbIntervalo
+            // 
+            cbIntervalo.FormattingEnabled = true;
+            cbIntervalo.Location = new Point(287, 38);
+            cbIntervalo.Name = "cbIntervalo";
+            cbIntervalo.Size = new Size(156, 25);
+            cbIntervalo.TabIndex = 4;
+            // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.Location = new Point(125, 86);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(57, 17);
+            lblNombre.TabIndex = 5;
+            lblNombre.Text = "Nombre";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblNombre);
+            Controls.Add(cbIntervalo);
             Controls.Add(chart1);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
-            Controls.Add(pictureBox1);
+            Controls.Add(btnBuscar);
+            Controls.Add(txtId);
+            Controls.Add(picLogo);
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -98,9 +119,11 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private TextBox textBox1;
-        private Button button1;
+        private PictureBox picLogo;
+        private TextBox txtId;
+        private Button btnBuscar;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private ComboBox cbIntervalo;
+        private Label lblNombre;
     }
 }

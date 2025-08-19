@@ -73,20 +73,8 @@ namespace CapaNegocio
         }
 
         public void Dispose() => _api.Dispose();
-    
-    
-    
-        private readonly CoinGeckoChartService _chartService;
 
-        public MonedaCN()
-        {
-            _chartService = new CoinGeckoChartService();
-        }
-
-        public async Task<MarketChartDataModel> ObtenerDatosGrafico(string id, string intervalo = "Días")
-        {
-            return await _chartService.GetMarketChartDataAsync(id, intervalo);
-        }
+      
     }
 }
 

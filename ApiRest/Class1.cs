@@ -43,57 +43,5 @@ namespace ApiRest
 
         public void Dispose() => _httpClient.Dispose();
     }
-    // LLamado de la Api para el manejo de los Graficos 
-    public class CoinGeckoChartService
-    {
-        private readonly HttpClient _httpClient;
-
-        public CoinGeckoChartService()
-        {
-            _httpClient = new HttpClient();
-            _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-        }
-
-        public async Task<MarketChartDataModel> GetMarketChartDataAsync(string id, string intervalo = "Días")
-        {
-            string days = intervalo switch
-            {
-                "Minutos" => "1",
-                "Horas" => "30",
-                _ => "90"
-            };
-
-            string urlInfo = $"https://api.coingecko.com/api/v3/coins/{id}?localization=false";
-            string urlChart = $"https://api.coingecko.com/api/v3/coins/{id}/market_chart?vs_currency=usd&days={days}";
-
-            // Info general
-            string responseInfo = await _httpClient.GetStringAsync(urlInfo);
-            JObject infoJson = JObject.Parse(responseInfo);
-            string name = infoJson["name"].ToString();
-            string imageUrl = infoJson["image"]["small"].ToString();
-
-            // Precios
-            string responseChart = await _httpClient.GetStringAsync(urlChart);
-            JObject chartJson = JObject.Parse(responseChart);
-            var pricesArray = (JArray)chartJson["prices"];
-
-            var dataPoints = new List<DataPoint>();
-            foreach (var point in pricesArray)
-            {
-                long unix = point[0].Value<long>();
-                double price = point[1].Value<double>();
-                DateTime date = DateTimeOffset.FromUnixTimeMilliseconds(unix).DateTime;
-
-                dataPoints.Add(new DataPoint { Date = date, Price = price });
-            }
-
-            return new MarketChartDataModel
-            {
-                Id = id,
-                Name = name,
-                ImageUrl = imageUrl,
-                DataPoints = dataPoints
-            };
-        }
-    }
+   
 }
