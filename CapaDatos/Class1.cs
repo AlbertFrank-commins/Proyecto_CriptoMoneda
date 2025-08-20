@@ -19,17 +19,5 @@ namespace CapaDatos
         public string image { get; set; } = "";
     }
     // json de Los Graficos
-    public class MarketChartDataModel
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string ImageUrl { get; set; }
-        public List<DataPoint> DataPoints { get; set; } = new();
-    }
-
-    public class DataPoint
-    {
-        public DateTime Date { get; set; }
-        public double Price { get; set; }
-    }
+   
 }

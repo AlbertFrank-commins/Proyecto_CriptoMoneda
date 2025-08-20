@@ -3,6 +3,14 @@ using CapaNegocio;
 using System.Net;
 using System.Windows.Forms.DataVisualization.Charting;
 using CapaEntidad;
+using System.Drawing;
+using System.Linq;
+using System.Net.Http;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 
 namespace Forns_Descripcion
 {
@@ -10,15 +18,19 @@ namespace Forns_Descripcion
     {
         private readonly MonedaCN _monedaCN;
         public event EventHandler<(string id, string intervalo)> OnRequestChart;
+
         public Form1()
         {
             InitializeComponent();
-            _monedaCN = new MonedaCN();
+            var service = new CoinGeckoChartService(new HttpClient());
+            var presenter = new GraphPresenter(this, service);
             cbIntervalo.Items.AddRange(new[] { "Minutos", "Horas", "Días" });
             cbIntervalo.SelectedIndex = 0;
             lblNombre.Text = "";
-           
+            btnBuscar.Visible = false;
+
         }
+       
         public void ShowChart(MarketChartDataModel model)
         {
             lblNombre.Text = model.Name;
@@ -127,7 +139,17 @@ namespace Forns_Descripcion
                     OnRequestChart?.Invoke(this, (id, intervalo));
             }
         }
-    }
-    
-}
 
+
+        /*private async void Form1_Load(object sender, EventArgs e)
+        {
+
+            // Solo configuración inicial, nada de Bitcoin aquí
+            chart1.Series.Clear();
+            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "dd/MM HH:mm";
+        }*/
+
+
+    }
+
+}

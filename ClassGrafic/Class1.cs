@@ -16,8 +16,13 @@ namespace CapaDatos
 
         public CoinGeckoChartService()
         {
+        }
+
+        public CoinGeckoChartService(HttpClient httpClient)
+        {
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+            _httpClient = httpClient;
         }
 
         public async Task<MarketChartDataModel> GetMarketChartDataAsync(string id, string intervalo)
@@ -61,7 +66,6 @@ namespace CapaDatos
                 dataPoints.Add(new DataPoint { Date = date, Price = price });
 
             }
-
 
             return new MarketChartDataModel
             {

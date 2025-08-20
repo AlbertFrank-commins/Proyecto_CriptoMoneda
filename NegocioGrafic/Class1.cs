@@ -26,6 +26,8 @@ namespace CapaNegocio
             return await _chartService.GetMarketChartDataAsync(id, intervalo);
         }
     }
+
+
     public class GraphPresenter
     {
         private readonly IGraphView _view;
@@ -55,4 +57,5 @@ namespace CapaNegocio
             }
         }
     }
+
 }

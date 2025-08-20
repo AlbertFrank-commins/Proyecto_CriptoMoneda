@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaGrafic", "CapaGrafic\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegocioGrafic", "NegocioGrafic\NegocioGrafic.csproj", "{25B6EFAC-5ECB-4447-AB49-AAE9F0902AD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "Menu\Menu.csproj", "{E85C4854-38BB-4A93-A025-DCD8B47551B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{25B6EFAC-5ECB-4447-AB49-AAE9F0902AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25B6EFAC-5ECB-4447-AB49-AAE9F0902AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25B6EFAC-5ECB-4447-AB49-AAE9F0902AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85C4854-38BB-4A93-A025-DCD8B47551B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85C4854-38BB-4A93-A025-DCD8B47551B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85C4854-38BB-4A93-A025-DCD8B47551B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85C4854-38BB-4A93-A025-DCD8B47551B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{797A24F7-D030-4912-8463-E7226A06A578} = {4C24F2C6-CB01-4AE9-82E3-D7E8EB830616}
 		{42002287-12F9-497E-B906-E5C2C076188E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{25B6EFAC-5ECB-4447-AB49-AAE9F0902AD2} = {369CB01D-A1A7-72D2-AABC-3F0945D148A2}
+		{E85C4854-38BB-4A93-A025-DCD8B47551B2} = {75AAFE54-2C57-40D7-BB4D-835C4854F369}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C09EB7B1-6240-49A3-B686-04DEFA4D1836}

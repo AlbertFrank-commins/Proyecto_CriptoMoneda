@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj" />
+    <ProjectReference Include="..\NegocioGrafic\NegocioGrafic.csproj" />
   </ItemGroup>
 
 </Project>
