@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Forns_Descripcion
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IGraphView
     {
         private readonly MonedaCN _monedaCN;
         public event EventHandler<(string id, string intervalo)> OnRequestChart;
@@ -27,10 +27,10 @@ namespace Forns_Descripcion
             cbIntervalo.Items.AddRange(new[] { "Minutos", "Horas", "Días" });
             cbIntervalo.SelectedIndex = 0;
             lblNombre.Text = "";
-            btnBuscar.Visible = false;
+            //btnBuscar.Visible = false;
 
         }
-       
+
         public void ShowChart(MarketChartDataModel model)
         {
             lblNombre.Text = model.Name;
@@ -107,26 +107,13 @@ namespace Forns_Descripcion
 
             chart1.Series.Add(series);
         }
+
         public void ShowError(string message)
         {
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private async void btnBuscar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(txtId.Text) && cbIntervalo.SelectedItem != null)
-            {
-                var id = txtId.Text.Trim().ToLower(); // para que sea más flexible
-                var intervalo = cbIntervalo.SelectedItem.ToString();
-
-                // Lanza el evento que maneja el presenter
-                OnRequestChart?.Invoke(this, (id, intervalo));
-            }
-            else
-            {
-                ShowError("Por favor, completa el ID de la moneda y selecciona un intervalo.");
-            }
-        }
+       
         private void txtId_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -141,15 +128,29 @@ namespace Forns_Descripcion
         }
 
 
-        /*private async void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
 
             // Solo configuración inicial, nada de Bitcoin aquí
             chart1.Series.Clear();
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "dd/MM HH:mm";
-        }*/
+        }
 
+        private void btn_Buscar_Click_1(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtId.Text) && cbIntervalo.SelectedItem != null)
+            {
+                var id = txtId.Text.Trim().ToLower(); // para que sea más flexible
+                var intervalo = cbIntervalo.SelectedItem.ToString();
 
+                // Lanza el evento que maneja el presenter
+                OnRequestChart?.Invoke(this, (id, intervalo));
+            }
+            else
+            {
+                ShowError("Por favor, completa el ID de la moneda y selecciona un intervalo.");
+            }
+        }
     }
 
 }

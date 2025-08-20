@@ -10,9 +10,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CapaGrafic\CapaGrafic.csproj" />
-    <ProjectReference Include="..\ClassGrafic\ClassGrafic.csproj" />
-  </ItemGroup>
-
 </Project>

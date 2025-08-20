@@ -10,12 +10,11 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.10.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CapaGrafic\CapaGrafic.csproj" />
-    <ProjectReference Include="..\NegocioGrafic\NegocioGrafic.csproj" />
+    <ProjectReference Include="..\ClassDescripcion\ClassDescripcion.csproj" />
+    <ProjectReference Include="..\NegocioDescripcion\NegocioDescripcion.csproj" />
   </ItemGroup>
 
 </Project>

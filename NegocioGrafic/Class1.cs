@@ -2,6 +2,7 @@
 using CapaEntidad;
 using CapaDatos;
 
+
 namespace CapaNegocio
 {
     public interface IGraphView
@@ -15,7 +16,7 @@ namespace CapaNegocio
     public class MonedaCN
     {
         private readonly CoinGeckoChartService _chartService;
-
+        
         public MonedaCN()
         {
             _chartService = new CoinGeckoChartService();

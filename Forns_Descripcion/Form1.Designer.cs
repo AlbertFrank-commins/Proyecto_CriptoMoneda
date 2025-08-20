@@ -33,7 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             picLogo = new PictureBox();
             txtId = new TextBox();
-            btnBuscar = new Button();
+            btn_Buscar = new Button();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             cbIntervalo = new ComboBox();
             lblNombre = new Label();
@@ -43,27 +43,28 @@
             // 
             // picLogo
             // 
-            picLogo.Location = new Point(232, 69);
+            picLogo.Location = new Point(308, 78);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(278, 135);
+            picLogo.Size = new Size(317, 251);
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
             // 
             // txtId
             // 
-            txtId.Location = new Point(125, 38);
+            txtId.Location = new Point(134, 36);
             txtId.Name = "txtId";
-            txtId.Size = new Size(156, 25);
+            txtId.Size = new Size(201, 25);
             txtId.TabIndex = 1;
             // 
-            // btnBuscar
+            // btn_Buscar
             // 
-            btnBuscar.Location = new Point(460, 40);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(75, 23);
-            btnBuscar.TabIndex = 2;
-            btnBuscar.Text = "button1";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btn_Buscar.Location = new Point(643, 36);
+            btn_Buscar.Name = "btn_Buscar";
+            btn_Buscar.Size = new Size(75, 23);
+            btn_Buscar.TabIndex = 2;
+            btn_Buscar.Text = "button1";
+            btn_Buscar.UseVisualStyleBackColor = true;
+            btn_Buscar.Click += btn_Buscar_Click_1;
             // 
             // chart1
             // 
@@ -71,28 +72,28 @@
             chart1.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             chart1.Legends.Add(legend2);
-            chart1.Location = new Point(12, 225);
+            chart1.Location = new Point(50, 335);
             chart1.Name = "chart1";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             chart1.Series.Add(series2);
-            chart1.Size = new Size(776, 213);
+            chart1.Size = new Size(816, 245);
             chart1.TabIndex = 3;
             chart1.Text = "chart1";
             // 
             // cbIntervalo
             // 
             cbIntervalo.FormattingEnabled = true;
-            cbIntervalo.Location = new Point(287, 38);
+            cbIntervalo.Location = new Point(358, 36);
             cbIntervalo.Name = "cbIntervalo";
-            cbIntervalo.Size = new Size(156, 25);
+            cbIntervalo.Size = new Size(200, 25);
             cbIntervalo.TabIndex = 4;
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(125, 86);
+            lblNombre.Location = new Point(145, 169);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(57, 17);
             lblNombre.TabIndex = 5;
@@ -102,11 +103,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(936, 592);
             Controls.Add(lblNombre);
             Controls.Add(cbIntervalo);
             Controls.Add(chart1);
-            Controls.Add(btnBuscar);
+            Controls.Add(btn_Buscar);
             Controls.Add(txtId);
             Controls.Add(picLogo);
             Name = "Form1";
@@ -121,7 +122,7 @@
 
         private PictureBox picLogo;
         private TextBox txtId;
-        private Button btnBuscar;
+        private Button btn_Buscar;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private ComboBox cbIntervalo;
         private Label lblNombre;

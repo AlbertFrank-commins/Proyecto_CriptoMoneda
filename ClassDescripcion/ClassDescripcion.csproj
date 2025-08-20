@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CapaGrafic\CapaGrafic.csproj" />
-    <ProjectReference Include="..\ClassGrafic\ClassGrafic.csproj" />
+    <ProjectReference Include="..\DatoDescripcion\DatoDescripcion.csproj" />
   </ItemGroup>
 
 </Project>
