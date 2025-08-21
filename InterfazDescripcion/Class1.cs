@@ -1,11 +1,14 @@
-﻿using System;
-
-public interface ICoinDescriptionView
+﻿public interface ICoinDescriptionView
 {
     event EventHandler<string> OnRequestDescription;
     event EventHandler OnCancel;
 
+    void ShowMessage(string message);
     void ShowDescription(string description);
-    void ShowMessage(string msg);
+    void UpdateProgress(int value);
+    void ToggleLoading(bool isLoading);
 }
+
+
+
 

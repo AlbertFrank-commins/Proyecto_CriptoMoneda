@@ -24,4 +24,7 @@ namespace CapaEntidad
         public double Low { get; set; }
         public double Close { get; set; }
     }
+   
+
+
 }

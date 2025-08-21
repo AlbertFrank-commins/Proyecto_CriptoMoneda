@@ -17,6 +17,8 @@ namespace Forns_Descripcion
     public partial class Form1 : Form, IGraphView
     {
         private readonly MonedaCN _monedaCN;
+        private SeriesChartType chartType;
+
         public event EventHandler<(string id, string intervalo)> OnRequestChart;
 
         public Form1()
@@ -38,16 +40,12 @@ namespace Forns_Descripcion
 
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
-            chart1.ChartAreas.Add(new ChartArea("Main"));
-            chart1.Series.Add("Precio");
-            chart1.Series["Precio"].ChartType = SeriesChartType.Line;
 
-            chart1.ChartAreas.Clear();
             var area = new ChartArea("Main");
 
             // Ajustar el eje Y automáticamente
-            area.AxisY.Minimum = model.DataPoints.Min(p => p.Price) * 0.98; // 2% menos
-            area.AxisY.Maximum = model.DataPoints.Max(p => p.Price) * 1.02; // 2% más
+            area.AxisY.Minimum = model.DataPoints.Min(p => p.Price) * 0.98;
+            area.AxisY.Maximum = model.DataPoints.Max(p => p.Price) * 1.02;
 
             // Estilo opcional para el eje X
             area.AxisX.Interval = 1;
@@ -55,58 +53,121 @@ namespace Forns_Descripcion
 
             chart1.ChartAreas.Add(area);
 
-            foreach (var point in model.DataPoints)
-            {
-                chart1.Series["Precio"].Points.AddXY(point.Date.ToString("g"), point.Price);
-            }
-        }
-
-        public void ShowColumnChart(MarketChartDataModel model)
-        {
-            lblNombre.Text = model.Name;
-            picLogo.Load(model.ImageUrl);
-
-            chart1.Series.Clear();
-            chart1.ChartAreas.Clear();
-
-            var area = new ChartArea("ColumnArea");
-            area.AxisX.Interval = 1;
-            area.AxisX.LabelStyle.Angle = -45;
-            area.AxisX.Title = "Fecha y hora";
-            area.AxisY.Title = "Precio USD";
-
-            // 🔥 AJUSTE PARA QUE EL EJE Y NO SEA DESPROPORCIONADO
-            var puntos = model.DataPoints.Skip(Math.Max(0, model.DataPoints.Count - 10)).ToList();
-
-            double min = puntos.Min(p => p.Price);
-            double max = puntos.Max(p => p.Price);
-
-            // Si los valores están muy juntos, ampliamos ligeramente el rango
-            if (max - min < 50)
-            {
-                min -= 10;
-                max += 10;
-            }
-
-            area.AxisY.Minimum = min;
-            area.AxisY.Maximum = max;
-
-            chart1.ChartAreas.Add(area);
-
             var series = new Series("Precio")
             {
-                ChartType = SeriesChartType.Column,
-                IsValueShownAsLabel = true,
+                ChartType = SeriesChartType.Line,
+                BorderWidth = 2,
                 Color = Color.Gold
             };
 
-            foreach (var point in puntos)
+            foreach (var point in model.DataPoints)
             {
                 series.Points.AddXY(point.Date.ToString("g"), point.Price);
             }
 
             chart1.Series.Add(series);
         }
+
+
+        public void ShowColumnChart(MarketChartDataModel model)
+        {
+            // Header
+            lblNombre.Text = model?.Name ?? "—";
+            try
+            {
+                // Cargar por URL sin bloquear el UI
+                picLogo.ImageLocation = model?.ImageUrl;
+            }
+            catch { /* Ignorar errores de carga */ }
+
+            // Guard: datos vacíos
+            if (model?.DataPoints == null || model.DataPoints.Count == 0)
+            {
+                chart1.Series.Clear();
+                chart1.ChartAreas.Clear();
+                chart1.Titles.Clear();
+                chart1.Titles.Add("Sin datos para mostrar");
+                return;
+            }
+
+            // Reset
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+            chart1.Titles.Clear();
+            chart1.Legends.Clear();
+
+            // Leyenda
+            var legend = new Legend { Docking = Docking.Top, Enabled = true };
+            chart1.Legends.Add(legend);
+
+            // Área
+            var area = new ChartArea("Main");
+            chart1.ChartAreas.Add(area);
+
+            // Eje X como fechas reales (mejor escalado y etiquetas)
+            area.AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
+            area.AxisX.LabelStyle.Angle = -45;
+            area.AxisX.LabelStyle.Format = "dd/MM HH:mm"; // adapta a tu preferencia
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisX.Title = "Fecha y hora";
+
+            // Eje Y
+            area.AxisY.MajorGrid.Enabled = true;
+            area.AxisY.Title = "Precio USD";
+
+            // Serie
+            var series = new Series("Precio")
+            {
+                ChartType = chartType,
+                BorderWidth = 2,
+                Color = Color.Gold,
+                XValueType = ChartValueType.DateTime,
+                YValueType = ChartValueType.Double,
+                IsValueShownAsLabel = chartType == SeriesChartType.Column // etiquetas visibles sólo en columnas
+            };
+
+            // Tooltips
+            series.ToolTip = "Fecha: #VALX{dd/MM/yyyy HH:mm}\nPrecio: #VALY USD";
+
+            // Datos: usar DateTime como X directamente
+            foreach (var p in model.DataPoints.OrderBy(d => d.Date))
+                series.Points.AddXY(p.Date, p.Price);
+
+            chart1.Series.Add(series);
+
+            // Título
+            chart1.Titles.Add($"{model.Name} - Evolución del precio");
+
+            // Escalado Y automático con pequeño padding si los precios son muy parecidos
+            double min = model.DataPoints.Min(p => p.Price);
+            double max = model.DataPoints.Max(p => p.Price);
+
+            if (Math.Abs(max - min) < 1e-9)
+            {
+                // Todos iguales: abre banda simétrica
+                area.AxisY.Minimum = min - 1;
+                area.AxisY.Maximum = max + 1;
+            }
+            else
+            {
+                // Padding del 2%
+                double pad = (max - min) * 0.02;
+                area.AxisY.Minimum = min - pad;
+                area.AxisY.Maximum = max + pad;
+            }
+
+            // Para líneas, puedes suavizar un poco la curva (opcional)
+            if (chartType == SeriesChartType.Line)
+            {
+                series["LineTension"] = "0.3"; // 0..1 (curva suavizada)
+                series.BorderDashStyle = ChartDashStyle.Solid;
+            }
+
+            // Recalcular por si el control necesita ajustar algo tras añadir puntos
+            area.RecalculateAxesScale();
+        }
+
+
 
         public void ShowError(string message)
         {

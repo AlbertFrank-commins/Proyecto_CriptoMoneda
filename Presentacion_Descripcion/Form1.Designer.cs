@@ -29,55 +29,132 @@
         private void InitializeComponent()
         {
             textBox1 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            btnBuscar = new Button();
+            btnEliminar = new Button();
             listBox1 = new ListBox();
+            txtMoneda = new Label();
+            progressBar1 = new ProgressBar();
+            panel1 = new Panel();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            panel4 = new Panel();
+            panel5 = new Panel();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(353, 29);
+            textBox1.Location = new Point(252, 38);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 25);
+            textBox1.Size = new Size(226, 25);
             textBox1.TabIndex = 0;
             // 
-            // button1
+            // btnBuscar
             // 
-            button1.Location = new Point(487, 29);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnBuscar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBuscar.Location = new Point(507, 31);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(112, 32);
+            btnBuscar.TabIndex = 1;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // button2
+            // btnEliminar
             // 
-            button2.Location = new Point(591, 27);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnEliminar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminar.Location = new Point(634, 31);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(112, 32);
+            btnEliminar.TabIndex = 2;
+            btnEliminar.Text = "Cancelar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(54, 160);
+            listBox1.Location = new Point(48, 140);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(612, 259);
+            listBox1.Size = new Size(704, 276);
             listBox1.TabIndex = 3;
+            // 
+            // txtMoneda
+            // 
+            txtMoneda.AutoSize = true;
+            txtMoneda.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMoneda.Location = new Point(85, 50);
+            txtMoneda.Name = "txtMoneda";
+            txtMoneda.Size = new Size(33, 45);
+            txtMoneda.TabIndex = 4;
+            txtMoneda.Text = "-";
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(48, 111);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(704, 23);
+            progressBar1.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(48, 450);
+            panel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(panel3);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(752, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(48, 450);
+            panel2.TabIndex = 7;
+            // 
+            // panel3
+            // 
+            panel3.Dock = DockStyle.Left;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(48, 450);
+            panel3.TabIndex = 7;
+            // 
+            // panel4
+            // 
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(48, 418);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(704, 32);
+            panel4.TabIndex = 8;
+            // 
+            // panel5
+            // 
+            panel5.Dock = DockStyle.Top;
+            panel5.Location = new Point(48, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(704, 32);
+            panel5.TabIndex = 9;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(panel5);
+            Controls.Add(panel4);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            Controls.Add(progressBar1);
+            Controls.Add(txtMoneda);
             Controls.Add(listBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnBuscar);
             Controls.Add(textBox1);
             Name = "Form1";
             Text = "Form1";
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -85,8 +162,15 @@
         #endregion
 
         private TextBox textBox1;
-        private Button button1;
-        private Button button2;
+        private Button btnBuscar;
+        private Button btnEliminar;
         private ListBox listBox1;
+        private Label txtMoneda;
+        private ProgressBar progressBar1;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel4;
+        private Panel panel5;
     }
 }
