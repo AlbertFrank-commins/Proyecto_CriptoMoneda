@@ -22,16 +22,40 @@ namespace Presentacion_Descripcion
             _presenter = new CoinDescriptionPresenter(this, service);
 
         }
-        public void ShowMessage(string message)
+        public async void ShowDescription(string description)
         {
-            if (InvokeRequired) BeginInvoke(new Action(() => listBox1.Items.Add(message)));
-            else listBox1.Items.Add(message);
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => ShowDescription(description)));
+                return;
+            }
+            await Task.Delay(700); 
+            listBox1.Items.Add("📄 Descripción:");
+
+            // Dividir el texto en líneas más pequeñas si es muy largo
+            int lineLength = 80; // caracteres por línea
+            for (int i = 0; i < description.Length; i += lineLength)
+            {
+                string line = (i + lineLength > description.Length)
+                    ? description.Substring(i)
+                    : description.Substring(i, lineLength);
+                listBox1.Items.Add(line);
+            }
+
+            listBox1.Items.Add(""); // línea vacía para separar de la próxima búsqueda
+            
         }
 
-        public void ShowDescription(string description)
+        public void ShowMessage(string message)
         {
-            if (InvokeRequired) BeginInvoke(new Action(() => listBox1.Items.Add(description)));
-            else listBox1.Items.Add(description);
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => ShowMessage(message)));
+                return;
+            }
+
+            listBox1.Items.Add("💬 " + message);
+            listBox1.Items.Add(""); // línea vacía para separar
         }
 
         public void UpdateProgress(int value)
@@ -53,7 +77,7 @@ namespace Presentacion_Descripcion
 
             btnBuscar.Enabled = !isLoading;
             btnEliminar.Enabled = isLoading;
-            txtMoneda.Enabled = !isLoading;
+            textBox1.Enabled = !isLoading;
 
             progressBar1.Visible = isLoading;
             if (!isLoading) progressBar1.Value = 0;
@@ -63,11 +87,12 @@ namespace Presentacion_Descripcion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string coin = txtMoneda.Text?.Trim();
+            string coin = textBox1.Text?.Trim().ToLower();
             if (!string.IsNullOrEmpty(coin))
                 OnRequestDescription?.Invoke(this, coin);
             else
                 ShowMessage("⚠ Escribe el id de la moneda (ej: bitcoin).");
+            listBox1.Items.Clear();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

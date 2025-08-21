@@ -44,9 +44,9 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(252, 38);
+            textBox1.Location = new Point(54, 38);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(226, 25);
+            textBox1.Size = new Size(428, 25);
             textBox1.TabIndex = 0;
             // 
             // btnBuscar
@@ -62,32 +62,35 @@
             // 
             // btnEliminar
             // 
+            btnEliminar.BackColor = Color.Red;
             btnEliminar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminar.Location = new Point(634, 31);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(112, 32);
             btnEliminar.TabIndex = 2;
             btnEliminar.Text = "Cancelar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
             // 
             // listBox1
             // 
+            listBox1.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            listBox1.ForeColor = SystemColors.MenuText;
             listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(48, 140);
+            listBox1.Location = new Point(48, 158);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(704, 276);
+            listBox1.Size = new Size(704, 214);
             listBox1.TabIndex = 3;
             // 
             // txtMoneda
             // 
             txtMoneda.AutoSize = true;
-            txtMoneda.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtMoneda.Location = new Point(85, 50);
+            txtMoneda.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMoneda.Location = new Point(736, 95);
             txtMoneda.Name = "txtMoneda";
-            txtMoneda.Size = new Size(33, 45);
+            txtMoneda.Size = new Size(10, 13);
             txtMoneda.TabIndex = 4;
-            txtMoneda.Text = "-";
+            txtMoneda.Text = ".";
             // 
             // progressBar1
             // 
@@ -124,9 +127,9 @@
             // panel4
             // 
             panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(48, 418);
+            panel4.Location = new Point(48, 401);
             panel4.Name = "panel4";
-            panel4.Size = new Size(704, 32);
+            panel4.Size = new Size(704, 49);
             panel4.TabIndex = 8;
             // 
             // panel5

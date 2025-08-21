@@ -175,7 +175,7 @@ namespace Forns_Descripcion
         }
 
        
-        private void txtId_KeyDown(object sender, KeyEventArgs e)
+       /* private void txtId_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -186,7 +186,7 @@ namespace Forns_Descripcion
                 if (!string.IsNullOrEmpty(id))
                     OnRequestChart?.Invoke(this, (id, intervalo));
             }
-        }
+        }*/
 
 
         private async void Form1_Load(object sender, EventArgs e)
