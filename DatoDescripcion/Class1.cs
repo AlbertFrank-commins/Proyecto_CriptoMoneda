@@ -1,5 +1,6 @@
 ﻿namespace DatoDescripcion
 {
+    //TODO ESTOS SON LOS JSON DE DESCRIPCION
     public class CoinDescriptionModel
     {
         public string Id { get; set; }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 
 namespace CapaEntidad
-{
+{ 
+    //TODO ESTOS SON LOS JSON PARA LOS GRAFICO
     public class MarketChartDataModel
     {
         public string Id { get; set; }

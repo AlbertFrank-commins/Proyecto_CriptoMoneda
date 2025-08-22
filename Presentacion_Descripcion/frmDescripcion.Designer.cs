@@ -1,6 +1,6 @@
 ﻿namespace Presentacion_Descripcion
 {
-    partial class Form1
+    partial class frmDescripcion
     {
         /// <summary>
         ///  Required designer variable.
@@ -79,7 +79,7 @@
             listBox1.FormattingEnabled = true;
             listBox1.Location = new Point(48, 158);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(704, 214);
+            listBox1.Size = new Size(704, 256);
             listBox1.TabIndex = 3;
             // 
             // txtMoneda
@@ -127,9 +127,9 @@
             // panel4
             // 
             panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(48, 401);
+            panel4.Location = new Point(48, 421);
             panel4.Name = "panel4";
-            panel4.Size = new Size(704, 49);
+            panel4.Size = new Size(704, 29);
             panel4.TabIndex = 8;
             // 
             // panel5
@@ -140,7 +140,7 @@
             panel5.Size = new Size(704, 32);
             panel5.TabIndex = 9;
             // 
-            // Form1
+            // frmDescripcion
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -155,7 +155,7 @@
             Controls.Add(btnEliminar);
             Controls.Add(btnBuscar);
             Controls.Add(textBox1);
-            Name = "Form1";
+            Name = "frmDescripcion";
             Text = "Form1";
             panel2.ResumeLayout(false);
             ResumeLayout(false);

@@ -1,7 +1,7 @@
 ﻿// CapaDatos/CoinModels.cs
 namespace CapaDatos
 {
-    // Lista básica (endpoint /coins/list)
+    //TODO Lista básica (endpoint /coins/list)
     public class CoinListItem
     {
         public string id { get; set; } = "";
@@ -9,7 +9,7 @@ namespace CapaDatos
         public string name { get; set; } = "";
     }
 
-    // Detalle con precio e imagen (endpoint /coins/markets)
+    //TODO Detalle con precio e imagen (endpoint /coins/markets)
     public class CoinMarket
     {
         public string id { get; set; } = "";
@@ -18,6 +18,6 @@ namespace CapaDatos
         public decimal current_price { get; set; }
         public string image { get; set; } = "";
     }
-    // json de Los Graficos
+  
    
 }

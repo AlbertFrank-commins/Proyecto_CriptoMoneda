@@ -55,7 +55,7 @@
             PanelMenu.Dock = DockStyle.Left;
             PanelMenu.Location = new Point(0, 0);
             PanelMenu.Name = "PanelMenu";
-            PanelMenu.Size = new Size(169, 518);
+            PanelMenu.Size = new Size(169, 547);
             PanelMenu.TabIndex = 0;
             // 
             // btnAyuda
@@ -70,31 +70,37 @@
             btnAyuda.TabIndex = 3;
             btnAyuda.Text = "AYUDA";
             btnAyuda.UseVisualStyleBackColor = true;
+            btnAyuda.Click += btnAyuda_Click;
             // 
             // btnBusD
             // 
             btnBusD.Dock = DockStyle.Top;
             btnBusD.FlatAppearance.BorderSize = 0;
             btnBusD.FlatStyle = FlatStyle.Flat;
-            btnBusD.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBusD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBusD.Image = (Image)resources.GetObject("btnBusD.Image");
+            btnBusD.ImageAlign = ContentAlignment.MiddleLeft;
             btnBusD.Location = new Point(0, 277);
             btnBusD.Name = "btnBusD";
             btnBusD.Size = new Size(169, 89);
             btnBusD.TabIndex = 2;
+            btnBusD.Text = "             Descripcion";
             btnBusD.UseVisualStyleBackColor = true;
+            btnBusD.Click += btnBusD_Click;
             // 
             // btnBusG
             // 
             btnBusG.Dock = DockStyle.Top;
             btnBusG.FlatAppearance.BorderSize = 0;
             btnBusG.FlatStyle = FlatStyle.Flat;
-            btnBusG.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBusG.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBusG.Image = (Image)resources.GetObject("btnBusG.Image");
+            btnBusG.ImageAlign = ContentAlignment.MiddleLeft;
             btnBusG.Location = new Point(0, 184);
             btnBusG.Name = "btnBusG";
             btnBusG.Size = new Size(169, 93);
             btnBusG.TabIndex = 1;
+            btnBusG.Text = "         Grafico";
             btnBusG.UseVisualStyleBackColor = true;
             btnBusG.Click += btnBusG_Click;
             // 
@@ -103,13 +109,15 @@
             btnBusM.Dock = DockStyle.Top;
             btnBusM.FlatAppearance.BorderSize = 0;
             btnBusM.FlatStyle = FlatStyle.Flat;
-            btnBusM.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBusM.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBusM.ForeColor = SystemColors.ActiveCaptionText;
             btnBusM.Image = (Image)resources.GetObject("btnBusM.Image");
+            btnBusM.ImageAlign = ContentAlignment.MiddleLeft;
             btnBusM.Location = new Point(0, 91);
             btnBusM.Name = "btnBusM";
             btnBusM.Size = new Size(169, 93);
             btnBusM.TabIndex = 0;
+            btnBusM.Text = "         Buscar";
             btnBusM.UseVisualStyleBackColor = true;
             btnBusM.Click += btnBusM_Click;
             // 
@@ -149,16 +157,17 @@
             PanelApp.Dock = DockStyle.Fill;
             PanelApp.Location = new Point(169, 0);
             PanelApp.Name = "PanelApp";
-            PanelApp.Size = new Size(782, 518);
+            PanelApp.Size = new Size(782, 547);
             PanelApp.TabIndex = 1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(951, 518);
+            ClientSize = new Size(951, 547);
             Controls.Add(PanelApp);
             Controls.Add(PanelMenu);
+            Font = new Font("Segoe UI", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             Name = "Form1";
             Text = "Form1";
             PanelMenu.ResumeLayout(false);

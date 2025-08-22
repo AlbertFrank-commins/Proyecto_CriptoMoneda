@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion1
 {
-    partial class Form1
+    partial class frmBuscar
     {
         /// <summary>
         ///  Required designer variable.
@@ -56,6 +56,7 @@
             // 
             lbl_Id.AutoSize = true;
             lbl_Id.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lbl_Id.ForeColor = Color.Black;
             lbl_Id.Location = new Point(77, 151);
             lbl_Id.Name = "lbl_Id";
             lbl_Id.Size = new Size(53, 21);
@@ -161,7 +162,7 @@
             label3.TabIndex = 13;
             label3.Text = "Precio";
             // 
-            // Form1
+            // frmBuscar
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -179,7 +180,7 @@
             Controls.Add(txt_Buscar);
             Controls.Add(lbl_Id);
             Controls.Add(pictureBox1);
-            Name = "Form1";
+            Name = "frmBuscar";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
